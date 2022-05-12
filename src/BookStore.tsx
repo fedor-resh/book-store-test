@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import ListOfBooks from "./ListOfBooks/ListOfBooks";
-import PrivateOffice from "./PrivatOffice/PrivateOffice";
+import ListOfBooks from "./components/ListOfBooks/ListOfBooks";
+import PrivateOffice from "./components/PrivatOffice/PrivateOffice";
 import {Book} from "./interfaces";
 import {booksFromDatabase} from "./booksFromDatabase";
+import s from './standart.module.css'
+import Background from "./UI/Background/Background";
+import {useSetRecoilState} from "recoil";
+import {showAlertState} from "./recoil/showAlertState";
 
 
 function addBoughtBookById(books:any,bookId:number){
@@ -20,12 +24,13 @@ function BookStore() {
     const [balance, setBalance] = useState(500)
     const [boughtBooks, setBoughtBooks] = useState<Object>({})
     const [books, setBooks] = useState<Array<Book>>(booksFromDatabase)
+    const setShowAlert = useSetRecoilState(showAlertState)
 
     function buyBook(bookId: number): void {
         const boughtBook: Book = books.find(book => book.id === bookId)!
         console.log(boughtBook,boughtBooks)
         if (balance < boughtBook.price) {
-            alert('не хватает средств на счету')
+            setShowAlert(true)
             return
         }
         setBooks([
@@ -37,22 +42,23 @@ function BookStore() {
     }
 
     return (
-        <div>
-            <ListOfBooks
-                books={books}
-                buyBook={buyBook}
-            />
-
-            <PrivateOffice
-                balance={balance}
-                amountBoughtBooks={Object.values(boughtBooks).reduce((acc,val)=>acc+val,0)}
-                priceOfBoughtBooks={
-                    Object.entries(boughtBooks).reduce((acc, [id,amount]) => {
-                        return acc + books.find(book => book.id.toString() === id)!.price * amount
-                    }, 0)
-                }
-            />
-        </div>
+        <Background>
+            <div className={s.wrapper}>
+                <PrivateOffice
+                    balance={balance}
+                    amountBoughtBooks={Object.values(boughtBooks).reduce((acc,val)=>acc+val,0)}
+                    priceOfBoughtBooks={
+                        Object.entries(boughtBooks).reduce((acc, [id,amount]) => {
+                            return acc + books.find(book => book.id.toString() === id)!.price * amount
+                        }, 0)
+                    }
+                />
+                <ListOfBooks
+                    books={books}
+                    buyBook={buyBook}
+                />
+            </div>
+        </Background>
     );
 }
 

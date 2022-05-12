@@ -2,11 +2,12 @@ import React from 'react';
 import s from './Button.module.css'
 export interface ButtonProps{
     children:string
+    className?:string
     size?:'general'|'small'
-    onClick:()=>void
+    onClick?:()=>void
 }
 
-const Button = ({size = 'small',children = 'button',onClick}:ButtonProps) => {
+const Button = ({size = 'small',children = 'button',onClick,className}:ButtonProps) => {
     const sizes = {
         general:'22px 32px',
         small:'10px 20px'
@@ -16,7 +17,7 @@ const Button = ({size = 'small',children = 'button',onClick}:ButtonProps) => {
     return (
         <button
             onClick={onClick}
-            className={s.button}
+            className={`${s.button} ${className}`}
             style={{padding}}
         >
             {children}

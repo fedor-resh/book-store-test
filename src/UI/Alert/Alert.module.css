@@ -1,0 +1,49 @@
+.alert{
+    composes: glass__box from '../../standart.module.css';
+    margin-bottom: 10px;
+    height: 0;
+    opacity: 0;
+}
+.error{
+    composes: alert;
+    background-color: rgba(255, 0, 0, 0.28) !important;
+}
+.normal{
+    composes: alert;
+    background-color: rgba(133, 255, 64, 0.28) !important;
+}
+.alert p{
+    margin: 0;
+    position: absolute;
+    inset:35% 0 0 0;
+}
+.show__alert{
+    animation:showAlert forwards 3s;
+}
+.hide__alert{
+    animation:hideAlert forwards 0.3s;
+}
+@keyframes showAlert {
+    0%{
+        opacity: 0;
+        height: 0;
+    }
+    10%{
+        opacity: 1;
+        height: 50px;
+    }
+    100%{
+        opacity: 1;
+        height: 50px;
+    }
+}
+@keyframes hideAlert {
+    0%{
+        opacity: 1;
+        height: 50px;
+    }
+    100%{
+        opacity: 0;
+        height: 0;
+    }
+}

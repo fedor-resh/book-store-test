@@ -1,0 +1,30 @@
+.glass__box{
+    background-color: var(--color-glass-background);
+    border-top:var(--color-border) 1px solid ;
+    border-right:var(--color-border) 1px solid ;
+    box-shadow:var(--shadow-general);
+    border-radius: var(--border-radius);
+    color:var(--color-general-text);
+    position: relative;
+}
+.glass__box:after{
+    border-radius: var(--border-radius);
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(20px);
+    z-index: -10;
+}
+.wrapper{
+    max-width: 1100px;
+    padding: 40px 20px;
+    margin: 0 auto;
+}
+@media screen and (min-width: 800px){
+    .wrapper{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+        align-items: start;
+    }
+}

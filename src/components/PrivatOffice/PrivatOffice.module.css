@@ -1,0 +1,41 @@
+.private__office{
+    composes: glass__box from '../../standart.module.css';
+    padding: 20px;
+    text-align: center;
+    max-width: 350px;
+    margin: 20px auto;
+
+}
+.sticky{
+    position: sticky;
+    top: 24px;
+}
+.wrapper{
+    position: relative;
+    align-self: stretch;
+}
+@media screen and (min-width: 800px){
+    .private__office{
+        margin: 0;
+        width: 350px;
+    }
+}
+.private__office img{
+    position: center;
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 100%;
+    border-top:2px solid rgb(255, 255, 255);
+    border-right:2px solid rgba(255, 255, 255, 0.65);
+    box-shadow: var(--shadow-general);
+}
+.private__office h3{
+    font-size: var(--font-size-general);
+}
+.first__button,
+.button{
+    width: 100%;
+}
+.first__button{
+    margin-bottom: 10px;
+}

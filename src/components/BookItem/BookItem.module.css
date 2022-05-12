@@ -1,0 +1,31 @@
+.book__item{
+    composes: glass__box from '../../standart.module.css';
+    transition:0.2s;
+    padding:20px;
+    margin-bottom: 15px;
+    font-size: var(--font-size-general);
+}
+.book__item p{
+    margin: 10px 0;
+}
+.alert,
+.price{
+    font-size: var(--font-size-subtitle);
+}
+.alert{
+    opacity: 0.8;
+    text-align: center;
+    width: 200px;
+}
+@media screen and (min-width: 980px){
+    .book__item{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .button{
+        padding: 20px 30px!important;
+        margin-right: 20px;
+    }
+}
