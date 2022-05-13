@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './PrivatOffice.module.css'
 import Button from "../../UI/Button/Button";
-// @ts-ignore
 import avatar from '../../assets/svg/avatar.png'
 import Alert from "../../UI/Alert/Alert";
 
 const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks}:PrivateOfficeProps) => {
-
     return (
         <div className={s.wrapper}>
         <div className={s.sticky}>

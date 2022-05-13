@@ -5,3 +5,30 @@
     top:0;
     z-index: -1000;
 }
+.left__circle{
+    z-index: -1000;
+    width:300px;
+    height:300px;
+    border-radius: 1000px;
+    position: absolute;
+    right: 70%;
+    top: 30%;
+    background-color:#A35178 ;
+}
+
+.right__circle{
+    z-index: -1000;
+    width:200px;
+    height:200px;
+    border-radius: 1000px;
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    background-color: #ac528e;
+}
+@media (max-width: 450px) {
+    .left__circle,
+    .right__circle{
+        display: none;
+    }
+}

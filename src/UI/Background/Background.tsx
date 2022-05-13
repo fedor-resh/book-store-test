@@ -8,6 +8,8 @@ const Background = ({children}:any) => {
         <div style={{overflow:"hidden"}}>
             {children}
             <Shape className={s.shape}/>
+            <div className={s.left__circle}></div>
+            <div className={s.right__circle}></div>
         </div>
     );
 };

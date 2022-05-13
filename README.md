@@ -1,13 +1,14 @@
 
 # тестовое задание
 ##### здравствуйте я Фёдор занимаюсь разработкой в течении года
-
 в этом тестовом задании я использовал:
 - react
 - type-script
 - storybook
 - recoil
 - css.modules
+
+https://book-store-test.vercel.app/
 
 # мои предыдущие проекты:
 ## typus 

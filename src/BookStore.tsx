@@ -25,10 +25,16 @@ function BookStore() {
     const [boughtBooks, setBoughtBooks] = useState<Object>({})
     const [books, setBooks] = useState<Array<Book>>(booksFromDatabase)
     const setShowAlert = useSetRecoilState(showAlertState)
-
+    function getPriceOfBoughtBooks() {
+        return Object.entries(boughtBooks).reduce((acc, [id,amount]) => {
+            return acc + books.find(book => book.id.toString() === id)!.price * amount
+        }, 0)
+    }
+    function getAmountOfBoughtBooks() {
+        return Object.values(boughtBooks).reduce((acc,val)=>acc+val,0)
+    }
     function buyBook(bookId: number): void {
         const boughtBook: Book = books.find(book => book.id === bookId)!
-        console.log(boughtBook,boughtBooks)
         if (balance < boughtBook.price) {
             setShowAlert(true)
             return
@@ -37,7 +43,7 @@ function BookStore() {
             ...books.filter(el => el !== boughtBook),
             {...boughtBook, amount: boughtBook.amount - 1}
         ])
-        setBalance(balance - boughtBook!.price)
+        setBalance(balance - boughtBook.price)
         setBoughtBooks(addBoughtBookById(boughtBooks,bookId))
     }
 
@@ -46,12 +52,8 @@ function BookStore() {
             <div className={s.wrapper}>
                 <PrivateOffice
                     balance={balance}
-                    amountBoughtBooks={Object.values(boughtBooks).reduce((acc,val)=>acc+val,0)}
-                    priceOfBoughtBooks={
-                        Object.entries(boughtBooks).reduce((acc, [id,amount]) => {
-                            return acc + books.find(book => book.id.toString() === id)!.price * amount
-                        }, 0)
-                    }
+                    amountBoughtBooks={getAmountOfBoughtBooks()}
+                    priceOfBoughtBooks={getPriceOfBoughtBooks()}
                 />
                 <ListOfBooks
                     books={books}
