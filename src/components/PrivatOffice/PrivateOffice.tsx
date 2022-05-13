@@ -12,7 +12,7 @@ const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks}:PrivateO
                 <img src={avatar} alt="avatar"/>
                 <h3>Личный кабинет</h3>
                 <p>баланс {balance}₽</p>
-                <p>вы купили {amountBoughtBooks} книги на сумму {priceOfBoughtBooks}₽</p>
+                <p>вы купили {amountBoughtBooks} книги <br/> на сумму {priceOfBoughtBooks}₽</p>
                 <Alert type='error' message='не хватает средств'/>
                 <Button className={s.first__button}>пополнить баланс</Button>
                 <Button className={s.button}>купленные книги</Button>

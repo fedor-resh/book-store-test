@@ -20,8 +20,8 @@ const BookItem = ({book, buyBook}: BookProps) => {
                 ? <p className={s.alert}>нет в наличии</p>
                 : <Button className={s.button} onClick={() => buyBook(book.id)}>купить</Button>
             }
-        </div>
 
+        </div>
     );
 };
 
