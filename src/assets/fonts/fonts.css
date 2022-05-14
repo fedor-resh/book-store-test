@@ -1,4 +1,4 @@
 @font-face {
     font-family: 'Harpseal';
-    src: url("/src/assets/fonts/Harpseal.ttf");
+    src: url("./Harpseal.ttf") format("truetype");
 }
