@@ -13,7 +13,7 @@ const BookItem = ({book, buyBook}: BookProps) => {
     return (
         <div className={s.book__item} key={book.id}>
             <div>
-                <p>{book.name}</p>
+                <p className={s.name}>{book.name}</p>
                 <p className={s.price}>Цена: {book.price}</p>
             </div>
             {book.amount === 0

@@ -4,7 +4,7 @@ import Button from "../../UI/Button/Button";
 import avatar from '../../assets/svg/avatar.png'
 import Alert from "../../UI/Alert/Alert";
 
-const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks}:PrivateOfficeProps) => {
+const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks,incrementBalance}:PrivateOfficeProps) => {
     return (
         <div className={s.wrapper}>
         <div className={s.sticky}>
@@ -14,7 +14,7 @@ const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks}:PrivateO
                 <p>баланс {balance}₽</p>
                 <p>вы купили {amountBoughtBooks} книги <br/> на сумму {priceOfBoughtBooks}₽</p>
                 <Alert type='error' message='не хватает средств'/>
-                <Button className={s.first__button}>пополнить баланс</Button>
+                <Button onClick={incrementBalance} className={s.first__button}>пополнить баланс</Button>
                 <Button className={s.button}>купленные книги</Button>
             </div>
         </div>
@@ -24,6 +24,7 @@ const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks}:PrivateO
 };
 
 export interface PrivateOfficeProps{
+    incrementBalance:()=>void
     balance:number
     amountBoughtBooks:number
     priceOfBoughtBooks:number

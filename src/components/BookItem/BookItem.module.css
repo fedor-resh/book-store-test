@@ -8,14 +8,17 @@
 .book__item p{
     margin: 10px 0;
 }
+
 .alert,
 .price{
     font-size: var(--font-size-subtitle);
 }
 .alert{
     opacity: 0.8;
-    width: 250px;
     padding-right: 20px;
+    flex-basis: 25%;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 @media screen and (min-width: 980px){
     .book__item{

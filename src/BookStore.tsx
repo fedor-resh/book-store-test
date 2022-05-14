@@ -51,11 +51,14 @@ function BookStore() {
         setBalance(balance - boughtBook.price)
         setBoughtBooks(boughtBooks.addBoughtBookById(bookId))
     }
-
+    function incrementBalance(){
+        setBalance(balance=>balance + +prompt('на сколько попонить?')!)
+    }
     return (
         <Background>
             <div className={s.wrapper}>
                 <PrivateOffice
+                    incrementBalance={incrementBalance}
                     balance={balance}
                     amountBoughtBooks={getAmountOfBoughtBooks()}
                     priceOfBoughtBooks={getPriceOfBoughtBooks()}
