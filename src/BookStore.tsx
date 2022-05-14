@@ -8,31 +8,36 @@ import Background from "./UI/Background/Background";
 import {useSetRecoilState} from "recoil";
 import {showAlertState} from "./recoil/showAlertState";
 
-
-function addBoughtBookById(books:any,bookId:number){
-    if(bookId in books){
-        books[bookId]+=1
-    }else{
-        books[bookId]=1
+class BoughtBooks {
+    addBoughtBookById(bookId: number) {
+        if (bookId in this) {
+            // @ts-ignore
+            this[bookId] += 1
+        } else {
+            // @ts-ignore
+            this[bookId] = 1
+        }
+        return this
     }
-    return books
 }
-
 
 
 function BookStore() {
     const [balance, setBalance] = useState(500)
-    const [boughtBooks, setBoughtBooks] = useState<Object>({})
+    const [boughtBooks, setBoughtBooks] = useState<BoughtBooks>(new BoughtBooks())
     const [books, setBooks] = useState<Array<Book>>(booksFromDatabase)
     const setShowAlert = useSetRecoilState(showAlertState)
+
     function getPriceOfBoughtBooks() {
-        return Object.entries(boughtBooks).reduce((acc, [id,amount]) => {
+        return Object.entries(boughtBooks).reduce((acc, [id, amount]) => {
             return acc + books.find(book => book.id.toString() === id)!.price * amount
         }, 0)
     }
+
     function getAmountOfBoughtBooks() {
-        return Object.values(boughtBooks).reduce((acc,val)=>acc+val,0)
+        return Object.values(boughtBooks).reduce((acc, val) => acc + val, 0)
     }
+
     function buyBook(bookId: number): void {
         const boughtBook: Book = books.find(book => book.id === bookId)!
         if (balance < boughtBook.price) {
@@ -44,7 +49,7 @@ function BookStore() {
             {...boughtBook, amount: boughtBook.amount - 1}
         ])
         setBalance(balance - boughtBook.price)
-        setBoughtBooks(addBoughtBookById(boughtBooks,bookId))
+        setBoughtBooks(boughtBooks.addBoughtBookById(bookId))
     }
 
     return (
