@@ -1,3 +1,35 @@
+.list__of__books{
+    width: 100%;
+}
+.list__of__books .empty{
+    font-size: var(--font-size-general);
+}
 .title{
     font-size: var(--font-size-title);
+}
+.input__wrapper{
+    composes: glass__box from './../../standart.module.css';
+    line-height: 10px;
+    border-radius: 50px!important;
+    margin-bottom: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+.input__wrapper svg{
+    margin: 0 10px;
+    cursor: pointer;
+}
+.input{
+    width: 80%;
+    margin-top: -11px;
+    font-family: Harpseal, sans-serif;
+    font-size: var(--font-size-general);
+    outline: none;
+    background:none;
+    border: none;
+    color:var(--color-general-text);
+}
+.input::placeholder{
+    color:var(--color-general-text);
+    opacity: 0.3;
 }

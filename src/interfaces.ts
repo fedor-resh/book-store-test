@@ -3,4 +3,5 @@ export interface Book {
     name: string,
     price: number,
     amount: number,
+    [key:string]:any
 }
