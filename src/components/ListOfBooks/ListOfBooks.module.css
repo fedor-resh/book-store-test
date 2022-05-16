@@ -34,9 +34,16 @@
     opacity: 0.3;
 }
 .flex{
-    display: flex;
-    gap: 20px;
+    margin-bottom: 20px;
 }
-.flex>*{
-    width: 100%;
+@media (min-width: 1050px) {
+    .flex{
+        margin-bottom: 0;
+        display: flex;
+        gap: 20px;
+    }
+    .flex>*{
+        width: 100%;
+    }
+
 }
