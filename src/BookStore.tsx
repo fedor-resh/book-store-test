@@ -9,13 +9,13 @@ import {useSetRecoilState} from "recoil";
 import {showAlertState} from "./recoil/showAlertState";
 
 class BoughtBooks {
+    [value: number]: number
+
     addBoughtBookById(bookId: number) {
         if (bookId in this) {
-            // @ts-ignore
             this[bookId] += 1
         } else {
-            // @ts-ignore
-            this[bookId] = 1
+            this[bookId]! = 1
         }
         return this
     }
@@ -51,9 +51,17 @@ function BookStore() {
         setBalance(balance - boughtBook.price)
         setBoughtBooks(boughtBooks.addBoughtBookById(bookId))
     }
-    function incrementBalance(){
-        setBalance(balance=>balance + +prompt('на сколько попонить?')!)
+
+    function incrementBalance() {
+        while (true) {
+            const x:number = +prompt('на сколько попонить?')!
+            if (!isNaN(x)) {
+                setBalance(balance => balance + x)
+                break
+            }
+        }
     }
+
     return (
         <Background>
             <div className={s.wrapper}>
