@@ -4,7 +4,7 @@ export interface ButtonProps{
     children:string
     className?:string
     size?:'general'|'small'
-    onClick?:()=>void
+    onClick?:(value:any)=>void
 }
 
 const Button = ({size = 'small',children = 'button',onClick,className}:ButtonProps) => {

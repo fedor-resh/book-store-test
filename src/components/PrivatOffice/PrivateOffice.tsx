@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SetStateAction} from 'react';
 import s from './PrivatOffice.module.css'
 import Button from "../../UI/Button/Button";
 import avatar from '../../assets/svg/avatar.png'
@@ -24,7 +24,7 @@ const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks,increment
 };
 
 export interface PrivateOfficeProps{
-    incrementBalance:()=>void
+    incrementBalance:(f:SetStateAction<any>)=>void
     balance:number
     amountBoughtBooks:number
     priceOfBoughtBooks:number

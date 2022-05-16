@@ -52,21 +52,12 @@ function BookStore() {
         setBoughtBooks(boughtBooks.addBoughtBookById(bookId))
     }
 
-    function incrementBalance() {
-        while (true) {
-            const x:number = +prompt('на сколько попонить?')!
-            if (!isNaN(x)) {
-                setBalance(balance => balance + x)
-                break
-            }
-        }
-    }
 
     return (
         <Background>
             <div className={s.wrapper}>
                 <PrivateOffice
-                    incrementBalance={incrementBalance}
+                    incrementBalance={()=>incrementBalance(setBalance)}
                     balance={balance}
                     amountBoughtBooks={getAmountOfBoughtBooks()}
                     priceOfBoughtBooks={getPriceOfBoughtBooks()}
@@ -79,5 +70,13 @@ function BookStore() {
         </Background>
     );
 }
-
+function incrementBalance(setBalance: (arg0: (prev: number) => number) => void) {
+    while (true) {
+        const x:number = +prompt('на сколько попонить?')!
+        if (!isNaN(x)) {
+            setBalance((prev: number) => prev + x)
+            break
+        }
+    }
+}
 export default BookStore;
