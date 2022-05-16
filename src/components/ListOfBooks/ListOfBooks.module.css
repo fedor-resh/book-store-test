@@ -33,3 +33,10 @@
     color:var(--color-general-text);
     opacity: 0.3;
 }
+.flex{
+    display: flex;
+    gap: 30px;
+}
+.flex>*{
+    width: 100%;
+}

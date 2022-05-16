@@ -1,0 +1,66 @@
+.characters{
+    font-size: 16px;
+    display: inline;
+    padding-left: 3px;
+}
+.selected__wrapper{
+    composes: glass__box from '../../standart.module.css';
+    border-radius: 1000px;
+    padding: 9px 12px;
+    font-size: 24px;
+}
+.selected{
+    display: inline;
+    margin-left: 10px;
+}
+.list{
+    visibility: hidden;
+    position: absolute!important;
+    composes: glass__box from '../../standart.module.css';
+    padding:5px;
+    border-radius: var(--border-radius);
+    top:50px;
+    left: 0;
+    opacity: 0;
+    transition: 0.1s;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    width: calc(100%);
+}
+.wrapper{
+    width: 100%;
+    margin-right: 3px;
+    position: relative;
+}
+.arrowSvg{
+    padding-top: 2px;
+    width: 20px;
+    height: 20px;
+    transition: 0.2s;
+    opacity:0.5;
+    stroke: var(--color-general-text);
+}
+.hover .arrowSvg,
+.list:hover~.arrowSvg {
+    transform: rotate(90deg);
+}
+.hover>.list{
+    opacity: 1;
+    visibility: revert;
+}
+.item{
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s;
+    padding: 10px;
+    border-radius: var(--border-radius);
+}
+.item:hover{
+    background-color: var(--color-glass-background);
+    opacity: 1;
+}
+.item p{
+    font-size: 24px;
+    margin: 0;
+    line-height: 1;
+}

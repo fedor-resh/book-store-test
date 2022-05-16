@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Book} from "../../interfaces";
 import Button from "../../UI/Button/Button";
 import s from './BookItem.module.css'
@@ -9,7 +9,7 @@ interface BookProps {
     buyBook: (id: number) => void,
 }
 
-const BookItem = ({book, buyBook}: BookProps) => {
+const BookItem:FC<BookProps> = ({book, buyBook}) => {
     return (
         <div className={s.book__item} key={book.id}>
             <div>
