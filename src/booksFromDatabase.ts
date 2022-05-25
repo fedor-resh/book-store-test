@@ -1,4 +1,6 @@
-export const booksFromDatabase = [
+import {Book} from "./interfaces";
+
+export const booksFromDatabase: Book[] = [
     {
         id: 1,
         name: 'Совершенный код. Мастер-класс',

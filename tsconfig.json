@@ -20,6 +20,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "paths": {
+    "@/components/*":[
+      "components/*"
+    ]
+  },
   "include": [
     "src",
     "typed-css.d.ts"

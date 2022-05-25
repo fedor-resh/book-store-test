@@ -1,33 +1,61 @@
-import React, {SetStateAction} from 'react';
+import React, { SetStateAction } from 'react'
 import s from './PrivatOffice.module.css'
-import Button from "../../UI/Button/Button";
+import Button from '../../UI/Button/Button'
 import avatar from '../../assets/svg/avatar.png'
-import Alert from "../../UI/Alert/Alert";
+import Alert from '../../UI/Alert/Alert'
 
-const PrivateOffice = ({balance, amountBoughtBooks, priceOfBoughtBooks,incrementBalance}:PrivateOfficeProps) => {
-    return (
-        <div className={s.wrapper}>
-        <div className={s.sticky}>
-            <div className={s.private__office}>
-                <img src={avatar} alt="avatar"/>
-                <h3>Личный кабинет</h3>
-                <p>баланс {balance}₽</p>
-                <p>вы купили {amountBoughtBooks} книги <br/> на сумму {priceOfBoughtBooks}₽</p>
-                <Alert type='error' message='не хватает средств'/>
-                <Button onClick={incrementBalance} className={s.first__button}>пополнить баланс</Button>
-                <Button className={s.button}>купленные книги</Button>
-            </div>
-        </div>
-        </div>
-
-);
-};
-
-export interface PrivateOfficeProps{
-    incrementBalance:(f:SetStateAction<any>)=>void
-    balance:number
-    amountBoughtBooks:number
-    priceOfBoughtBooks:number
+const PrivateOffice = ({
+	balance,
+	amountBoughtBooks,
+	priceOfBoughtBooks,
+	incrementBalance,
+}: PrivateOfficeProps) => {
+	return (
+		<div className={s.wrapper}>
+			<div className={s.sticky}>
+				<div className={s.private__office}>
+					<img
+						src={avatar}
+						alt="avatar"
+					/>
+					<h3>Личный кабинет</h3>
+					<p>баланс {balance}₽</p>
+					<p>
+						вы купили{' '}
+						{amountBoughtBooks}{' '}
+						книги <br /> на
+						сумму{' '}
+						{priceOfBoughtBooks}
+						₽
+					</p>
+					<Alert
+						type="error"
+						message="не хватает средств"
+					/>
+					<Button
+						onClick={
+							incrementBalance
+						}
+						className={
+							s.first__button
+						}
+					>
+						пополнить баланс
+					</Button>
+					<Button className={s.button}>
+						купленные книги
+					</Button>
+				</div>
+			</div>
+		</div>
+	)
 }
 
-export default PrivateOffice;
+export interface PrivateOfficeProps {
+	incrementBalance: (f: SetStateAction<any>) => void
+	balance: number
+	amountBoughtBooks: number
+	priceOfBoughtBooks: number
+}
+
+export default PrivateOffice
